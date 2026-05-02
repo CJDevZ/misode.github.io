@@ -1106,6 +1106,14 @@
       "dependency": "pixelmon",
       "wiki": "https://pixelmonmod.com/wiki/",
       "minVersion": "1.21.1"
+    },
+    {
+      "id": "declarative_ui:command",
+      "url": "declarative_ui/command",
+      "path": "declarative_ui/command",
+      "tags": ["partners"],
+      "dependency": "declarative_ui",
+      "minVersion": "1.21.11"
     }
   ],
   "legacyGuides": [
