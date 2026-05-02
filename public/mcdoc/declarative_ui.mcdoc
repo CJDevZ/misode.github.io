@@ -8,65 +8,65 @@ dispatch minecraft:resource[declarative_ui:container] to struct DeclaredContaine
 }
 
 enum(string) ClickType {
-    MOUSE_LEFT = "mouse_left",
-    MOUSE_RIGHT = "mouse_right",
-    MOUSE_LEFT_SHIFT = "mouse_left_shift",
-    MOUSE_RIGHT_SHIFT = "mouse_right_shift",
-    NUM_KEY_1 = "num_key_1",
-    NUM_KEY_2 = "num_key_2",
-    NUM_KEY_3 = "num_key_3",
-    NUM_KEY_4 = "num_key_4",
-    NUM_KEY_5 = "num_key_5",
-    NUM_KEY_6 = "num_key_6",
-    NUM_KEY_7 = "num_key_7",
-    NUM_KEY_8 = "num_key_8",
-    NUM_KEY_9 = "num_key_9",
-    MOUSE_MIDDLE = "mouse_middle",
-    DROP = "drop",
-    CTRL_DROP = "ctrl_drop",
-    MOUSE_LEFT_OUTSIDE = "mouse_left_outside",
-    MOUSE_RIGHT_OUTSIDE = "mouse_right_outside",
-    MOUSE_LEFT_DRAG_START = "mouse_left_drag_start",
-    MOUSE_RIGHT_DRAG_START = "mouse_right_drag_start",
-    MOUSE_MIDDLE_DRAG_START = "mouse_middle_drag_start",
-    MOUSE_LEFT_DRAG_ADD = "mouse_left_drag_add",
-    MOUSE_RIGHT_DRAG_ADD = "mouse_right_drag_add",
-    MOUSE_MIDDLE_DRAG_ADD = "mouse_middle_drag_add",
-    MOUSE_LEFT_DRAG_END = "mouse_left_drag_end",
-    MOUSE_RIGHT_DRAG_END = "mouse_right_drag_end",
-    MOUSE_MIDDLE_DRAG_END = "mouse_middle_drag_end",
-    MOUSE_DOUBLE_CLICK = "mouse_double_click",
-    UNKNOWN = "unknown",
-    OFFHAND_SWAP = "offhand_swap"
+    MouseLeft = "mouse_left",
+    MouseRight = "mouse_right",
+    MouseLeftShift = "mouse_left_shift",
+    MouseRightShift = "mouse_right_shift",
+    NumKey1 = "num_key_1",
+    NumKey2 = "num_key_2",
+    NumKey3 = "num_key_3",
+    NumKey4 = "num_key_4",
+    NumKey5 = "num_key_5",
+    NumKey6 = "num_key_6",
+    NumKey7 = "num_key_7",
+    NumKey8 = "num_key_8",
+    NumKey9 = "num_key_9",
+    MouseMiddle = "mouse_middle",
+    Drop = "drop",
+    CtrlDrop = "ctrl_drop",
+    MouseLeftOutside = "mouse_left_outside",
+    MouseRightOutside = "mouse_right_outside",
+    MouseLeftDragStart = "mouse_left_drag_start",
+    MouseRightDragStart = "mouse_right_drag_start",
+    MouseMiddleDragStart = "mouse_middle_drag_start",
+    MouseLeftDragAdd = "mouse_left_drag_add",
+    MouseRightDragAdd = "mouse_right_drag_add",
+    MouseMiddleDragAdd = "mouse_middle_drag_add",
+    MouseLeftDragEnd = "mouse_left_drag_end",
+    MouseRightDragEnd = "mouse_right_drag_end",
+    MouseMiddleDragEnd = "mouse_middle_drag_end",
+    MouseDoubleClick = "mouse_double_click",
+    Unknown = "unknown",
+    OffhandSwap = "offhand_swap"
 }
 
 enum(string) ActionType {
-    PICKUP = "pickup",
-    QUICK_MOVE = "quick_move",
-    SWAP = "swap",
-    CLONE = "clone",
-    THROW = "throw",
-    QUICK_CRAFT = "quick_craft",
-    PICKUP_ALL = "pickup_all"
+    Pickup = "pickup",
+    QuickMove = "quick_move",
+    Swap = "swap",
+    Clone = "clone",
+    Throw = "throw",
+    QuickCraft = "quick_craft",
+    PickupAll = "pickup_all"
 }
 
-enum(int) PermissionLevel {
-    ALL = 0,
-    MODERATORS = 1,
-    GAMEMASTERS = 2,
-    ADMINS = 3,
-    OWNERS = 4
+enum(string) PermissionLevel {
+    All = "all",
+    Moderators = "moderators",
+    Gamemasters = "gamemasters",
+    Admins = "admins",
+    Owners = "owners"
 }
 
 enum(string) ClickActionType {
-    FUNCTION = "declarative_ui:function",
-    OPEN_MENU = "declarative_ui:open_menu",
+    Function = "declarative_ui:function",
+    OpenMenu = "declarative_ui:open_menu",
     /// The menu will be closed.
-    CLOSE_MENU = "declarative_ui:close_menu",
+    CloseMenu = "declarative_ui:close_menu",
     /// The menu will be refreshed, re-rendering all slots.
-    REFRESH_MENU = "declarative_ui:refresh_menu",
+    RefreshMenu = "declarative_ui:refresh_menu",
     /// Only the title will be re-evaluated.
-    REFRESH_MENU_TITLE = "declarative_ui:refresh_menu_title"
+    RefreshMenuTitle = "declarative_ui:refresh_menu_title"
 }
 
 struct ClickAction {
@@ -98,9 +98,9 @@ struct SlotProvider {
 }
 
 enum(string) SlotProviderType {
-    SIMPLE = "declarative_ui:simple",
-    TAG = "declarative_ui:tag",
-    ANIMATED = "declarative_ui:animated"
+    Simple = "declarative_ui:simple",
+    Tag = "declarative_ui:tag",
+    Animated = "declarative_ui:animated"
 }
 
 dispatch declarative_ui:slot_provider_type[declarative_ui:simple] to struct SimpleSlotProvider {
@@ -136,10 +136,10 @@ struct ContainerProvider {
 }
 
 enum(string) ContainerProviderType {
-    CONTAINER_ENTITY = "declarative_ui:container_entity",
-    ENDER_CHEST = "declarative_ui:ender_chest",
-    PLAYER_CONTAINER = "declarative_ui:player_container",
-    PLAYER_INVENTORY = "declarative_ui:player_inventory"
+    ContainerEntity = "declarative_ui:container_entity",
+    EnderChest = "declarative_ui:ender_chest",
+    PlayerContainer = "declarative_ui:player_container",
+    PlayerInventory = "declarative_ui:player_inventory"
 }
 
 dispatch declarative_ui:container_provider_type[declarative_ui:player_container] to struct PlayerContainerProvider {
@@ -159,8 +159,8 @@ struct DeclaredContainerProvider {
 }
 
 enum(string) MenuType {
-    SIMPLE = "declarative_ui:simple",
-    SEARCH = "declarative_ui:search"
+    Simple = "declarative_ui:simple",
+    Search = "declarative_ui:search"
 }
 
 dispatch declarative_ui:menu_type[declarative_ui:simple] to struct SimpleMenu {
@@ -229,9 +229,9 @@ dispatch declarative_ui:command_argument_type[brigadier:long] to struct {
 
 dispatch declarative_ui:command_argument_type[brigadier:string] to struct {
     variant: enum(string) {
-        SINGLE_WORD = "single_word",
-        QUOTABLE_PHRASE = "quotable_phrase",
-        GREEDY_PHRASE = "greedy_phrase"
+        SingleWord = "single_word",
+        QuotablePhrase = "quotable_phrase",
+        GreedyPhrase = "greedy_phrase"
     }
 }
 
@@ -260,8 +260,8 @@ dispatch declarative_ui:command_argument_type[resource_key] to RegistryArgument
 dispatch declarative_ui:command_argument_type[resource_selector] to RegistryArgument
 
 enum(string) CommandActionType {
-    FUNCTION = "declarative_ui:function",
-    OPEN_MENU = "declarative_ui:open_menu"
+    Function = "declarative_ui:function",
+    OpenMenu = "declarative_ui:open_menu"
 }
 
 struct CommandAction {
