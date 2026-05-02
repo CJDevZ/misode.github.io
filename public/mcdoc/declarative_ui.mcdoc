@@ -2,9 +2,10 @@ use ::java::util::text::Text
 use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::ItemStackTemplate
 use ::java::data::predicate::Predicate
+use ::java::data::util::MinMaxBounds
 
 dispatch minecraft:resource[declarative_ui:container] to struct DeclaredContainer {
-    size: int
+    size: int @ 1..
 }
 
 enum(string) ClickType {
@@ -195,7 +196,7 @@ dispatch minecraft:resource[declarative_ui:menu] to struct DeclaredMenu {
 }
 
 struct CommandArgumentProvider {
-	type: #[id="command_argument_type"] string,
+	type: #[id(registry="command_argument_type")] string,
     ...declarative_ui:command_argument_type[[type]]
 }
 
