@@ -1114,6 +1114,22 @@
       "tags": ["partners"],
       "dependency": "declarative_ui",
       "minVersion": "1.21.11"
+    },
+    {
+      "id": "declarative_ui:container",
+      "url": "declarative_ui/container",
+      "path": "declarative_ui/container",
+      "tags": ["partners"],
+      "dependency": "declarative_ui",
+      "minVersion": "1.21.11"
+    },
+    {
+      "id": "declarative_ui:menu",
+      "url": "declarative_ui/menu",
+      "path": "declarative_ui/menu",
+      "tags": ["partners"],
+      "dependency": "declarative_ui",
+      "minVersion": "1.21.11"
     }
   ],
   "legacyGuides": [
