@@ -186,6 +186,8 @@ dispatch declarative_ui:menu_type[declarative_ui:search] to struct SearchMenu {
     manipulate_player_slots?: boolean,
     /// Defaults to `false`. If `true`, the player's inventory will be locked while the menu is open, preventing any interaction with it.
     lock_player_inventory?: boolean,
+    slots?: [DeclaredSlot],
+    containers?: [DeclaredContainerProvider],
     search_actions?: (ClickEvent | [ClickEvent]),
     close_actions?: (ClickAction | [ClickAction])
 }
