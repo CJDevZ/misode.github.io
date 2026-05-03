@@ -286,7 +286,7 @@ struct DeclaredNode {
     nodes?: struct {
         [string]: DeclaredNode
     },
-    permission_level?: (PermissionLevel | int)
+    permission_level?: (PermissionLevel | int @ 0..4)
 }
 
 dispatch minecraft:resource[declarative_ui:command] to struct DeclaredCommand {
@@ -294,5 +294,5 @@ dispatch minecraft:resource[declarative_ui:command] to struct DeclaredCommand {
     nodes?: struct {
         [string]: DeclaredNode
     },
-    permission_level?: (PermissionLevel | int)
+    permission_level?: (PermissionLevel | int @ 0..4)
 }
