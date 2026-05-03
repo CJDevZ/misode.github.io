@@ -76,7 +76,7 @@ export async function fetchRegistries(versionId: VersionId) {
 		const data = await cachedFetch<any>(`${mcmeta(version, 'summary')}/registries/data.min.json`)
 		const result = new Map<string, string[]>()
 		for (const id in data) {
-			result.set(id, data[id].map((e: string) => e.indexOf(':') === -1 ? 'minecraft:' + e : e))
+			result.set(id, data[id].map((e: string) => 'minecraft:' + e))
 		}
 		return result
 	} catch (e) {
