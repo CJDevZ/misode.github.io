@@ -283,7 +283,7 @@ dispatch declarative_ui:command_action_type[declarative_ui:open_menu] to struct 
 }
 
 struct DeclaredNode {
-    argument_type?: CommandArgumentProvider,
+    argument?: CommandArgumentProvider,
     action?: CommandAction,
     nodes?: struct {
         [string]: DeclaredNode
