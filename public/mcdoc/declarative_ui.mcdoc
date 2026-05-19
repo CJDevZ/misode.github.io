@@ -3,6 +3,7 @@ use ::java::data::item_modifier::ItemModifier
 use ::java::world::item::ItemStackTemplate
 use ::java::data::predicate::Predicate
 use ::java::data::util::MinMaxBounds
+use ::java::data::util::NumberProvider
 
 dispatch minecraft:resource[declarative_ui:container] to struct DeclaredContainer {
     size: int @ 1..
@@ -118,7 +119,7 @@ dispatch declarative_ui:slot_provider_type[declarative_ui:tag] to struct TagSlot
 }
 
 dispatch declarative_ui:slot_provider_type[declarative_ui:animated] to struct AnimatedSlotProvider {
-    providers: [(#[id="item"] string | SlotProvider)],
+    providers: [(#[id="item"] string | SimpleSlotProvider)],
     /// The duration in ticks that each provider will be displayed for before switching to the next one.
     interval: int,
     /// Defaults to `false`. If `true`, the providers will be displayed in a random order instead of sequentially.
@@ -126,7 +127,7 @@ dispatch declarative_ui:slot_provider_type[declarative_ui:animated] to struct An
 }
 
 struct DeclaredSlot {
-    slot: int,
+    slot: NumberProvider,
     provider: SlotProvider,
     click_event?: (ClickEvent | [ClickEvent])
 }
