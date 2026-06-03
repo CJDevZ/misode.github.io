@@ -9,6 +9,11 @@ dispatch minecraft:resource[declarative_ui:container] to struct DeclaredContaine
     size: int @ 1..
 }
 
+dispatch minecraft:resource[declarative_ui:custom_click_action] to struct DeclaredCustomClickAction {
+    /// The specified function will be executed when the click action is received. The function will be run with the payload.
+    function: #[id="function"] string
+}
+
 enum(string) ClickType {
     MouseLeft = "mouse_left",
     MouseRight = "mouse_right",
@@ -162,7 +167,8 @@ struct DeclaredContainerProvider {
 
 enum(string) MenuType {
     Simple = "declarative_ui:simple",
-    Search = "declarative_ui:search"
+    Search = "declarative_ui:search",
+    Book = "declarative_ui:book"
 }
 
 dispatch declarative_ui:menu_type[declarative_ui:simple] to struct SimpleMenu {
@@ -191,6 +197,11 @@ dispatch declarative_ui:menu_type[declarative_ui:search] to struct SearchMenu {
     containers?: [DeclaredContainerProvider],
     search_actions?: (ClickEvent | [ClickEvent]),
     close_actions?: (ClickAction | [ClickAction])
+}
+
+dispatch declarative_ui:menu_type[declarative_ui:book] to struct BookMenu {
+    /// The content of the book. Each entry in the array represents a page and will get resolved when the menu is opened.
+    pages: [Text]
 }
 
 dispatch minecraft:resource[declarative_ui:menu] to struct DeclaredMenu {
