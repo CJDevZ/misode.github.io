@@ -76,6 +76,7 @@
   "generator.declarative_ui:command": "Declarative UI Command",
   "generator.declarative_ui:container": "Declarative UI Container",
   "generator.declarative_ui:menu": "Declarative UI Menu",
+  "generator.declarative_ui:custom_click_action": "Declarative UI Custom Click Action",
   "generator.dialog": "Dialog",
   "generator.dimension": "Dimension",
   "generator.dimension_type": "Dimension Type",

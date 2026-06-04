@@ -1130,6 +1130,14 @@
       "tags": ["partners"],
       "dependency": "declarative_ui",
       "minVersion": "1.21.11"
+    },
+    {
+      "id": "declarative_ui:custom_click_action",
+      "url": "declarative_ui/custom_click_action",
+      "path": "declarative_ui/custom_click_action",
+      "tags": ["partners"],
+      "dependency": "declarative_ui",
+      "minVersion": "1.21.11"
     }
   ],
   "legacyGuides": [
