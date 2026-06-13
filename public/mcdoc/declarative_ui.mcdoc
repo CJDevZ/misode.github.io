@@ -1,9 +1,11 @@
-use ::java::util::text::Text
 use ::java::data::item_modifier::ItemModifier
-use ::java::world::item::ItemStackTemplate
+use ::java::data::loot::EntityTarget
 use ::java::data::predicate::Predicate
 use ::java::data::util::MinMaxBounds
 use ::java::data::util::NumberProvider
+use ::java::util::InclusiveRange
+use ::java::util::text::Text
+use ::java::world::item::ItemStackTemplate
 
 dispatch minecraft:resource[declarative_ui:container] to struct DeclaredContainer {
     size: int @ 1..
@@ -131,8 +133,37 @@ dispatch declarative_ui:slot_provider_type[declarative_ui:animated] to struct An
     random?: boolean
 }
 
-struct DeclaredSlot {
+struct Slot {
+    type: #[id] SlotType,
+    ...declarative_ui:slot_type[[type]],
+}
+
+enum(string) SlotType {
+    Simple = "declarative_ui:simple",
+    Redirect = "declarative_ui:redirect",
+    Fill = "declarative_ui:fill"
+}
+
+dispatch declarative_ui:slot_type[declarative_ui:simple] to struct SimpleSlot {
     slot: NumberProvider,
+    provider: SlotProvider,
+    click_event?: (ClickEvent | [ClickEvent])
+}
+
+dispatch declarative_ui:slot_type[declarative_ui:redirect] to struct RedirectSlots {
+    provider: ContainerProvider,
+    redirects: [struct {
+        slot: int,
+        container_slot: int,
+        /// Overrides the view_only property of the declared container provider for this specific redirect.
+        view_only?: boolean
+    }],
+    /// Defaults to `false`. If `true`, the container provided by this provider will only be used for rendering and will not be interactable.
+    view_only?: boolean
+}
+
+dispatch declarative_ui:slot_type[declarative_ui:fill] to struct FillSlots {
+    range: InclusiveRange<int>,
     provider: SlotProvider,
     click_event?: (ClickEvent | [ClickEvent])
 }
@@ -153,18 +184,6 @@ dispatch declarative_ui:container_provider_type[declarative_ui:player_container]
     container: #[id="declarative_ui:container"] string
 }
 
-struct DeclaredContainerProvider {
-    provider: ContainerProvider,
-    redirects: [struct {
-        slot: int,
-        container_slot: int,
-        /// Overrides the view_only property of the declared container provider for this specific redirect.
-        view_only?: boolean
-    }],
-    /// Defaults to `false`. If `true`, the container provided by this provider will only be used for rendering and will not be interactable.
-    view_only?: boolean
-}
-
 enum(string) MenuType {
     Simple = "declarative_ui:simple",
     Search = "declarative_ui:search",
@@ -179,8 +198,7 @@ dispatch declarative_ui:menu_type[declarative_ui:simple] to struct SimpleMenu {
     manipulate_player_slots?: boolean,
     /// Defaults to `false`. If `true`, the player's inventory will be locked while the menu is open, preventing any interaction with it.
     lock_player_inventory?: boolean,
-    slots: [DeclaredSlot],
-    containers?: [DeclaredContainerProvider],
+    slots: [Slot],
     close_actions?: (ClickAction | [ClickAction])
 }
 
@@ -193,8 +211,7 @@ dispatch declarative_ui:menu_type[declarative_ui:search] to struct SearchMenu {
     manipulate_player_slots?: boolean,
     /// Defaults to `false`. If `true`, the player's inventory will be locked while the menu is open, preventing any interaction with it.
     lock_player_inventory?: boolean,
-    slots?: [DeclaredSlot],
-    containers?: [DeclaredContainerProvider],
+    slots?: [Slot],
     search_actions?: (ClickEvent | [ClickEvent]),
     close_actions?: (ClickAction | [ClickAction])
 }
@@ -309,4 +326,10 @@ dispatch minecraft:resource[declarative_ui:command] to struct DeclaredCommand {
         [string]: DeclaredNode
     },
     permission_level?: (PermissionLevel | int @ 0..4)
+}
+
+dispatch minecraft:slot_source_type[declarative_ui:container] to struct ContainerSlotSource {
+    source: EntityTarget,
+    container: #[id="declarative_ui:container"] string,
+    range: InclusiveRange<int>
 }
