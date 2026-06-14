@@ -328,7 +328,7 @@ dispatch minecraft:resource[declarative_ui:command] to struct DeclaredCommand {
     permission_level?: (PermissionLevel | int @ 0..4)
 }
 
-dispatch minecraft:slot_source_type[declarative_ui:container] to struct ContainerSlotSource {
+dispatch minecraft:slot_source[declarative_ui:container] to struct ContainerSlotSource {
     source: EntityTarget,
     container: #[id="declarative_ui:container"] string,
     range: InclusiveRange<int>
